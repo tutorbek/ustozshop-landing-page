@@ -129,12 +129,20 @@
     @keyframes fadeUp   { from{opacity:0;transform:translateY(28px);}  to{opacity:1;transform:none;} }
 
     /* ── GLITCH LOGO ── */
-    .logo-wrap { margin-bottom: 20px; animation: fadeUp 1s ease .15s both; }
+    .logo-wrap {
+      margin-bottom: 20px;
+      animation: fadeUp 1s ease .15s both;
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+    }
     .logo {
       font-family: 'Syne', sans-serif; font-weight: 800;
-      font-size: clamp(3.4rem, 11vw, 7rem);
+      /* ✅ FIX: min 1.8rem o'rniga 9vw birlik asosiy — mobilda chiqib ketmaydi */
+      font-size: clamp(1.8rem, 9vw, 7rem);
       line-height: 1; display: inline-block;
       letter-spacing: -.02em; cursor: default; user-select: none;
+      white-space: nowrap;
     }
     .logo .ustoz { color: var(--dark); position: relative; }
     .logo .dot   { color: var(--blue-bright); }
@@ -218,7 +226,17 @@
     }
     footer a { color: var(--blue-bright); text-decoration: none; }
 
-    @media (max-width:500px) { .pill{font-size:.62rem;padding:6px 13px;} }
+    /* ── MOBILE FIXES ── */
+    @media (max-width: 500px) {
+      .pill { font-size: .62rem; padding: 6px 13px; }
+      .status-chip { font-size: .6rem; padding: 5px 14px; letter-spacing: .1em; }
+      .cta-btn { padding: 14px 26px; font-size: .92rem; gap: 10px; }
+    }
+
+    /* ── EXTRA SMALL (iPhone SE, 320px) ── */
+    @media (max-width: 360px) {
+      .logo { font-size: clamp(1.55rem, 8.5vw, 3rem); }
+    }
   </style>
 </head>
 <body>
